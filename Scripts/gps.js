@@ -10,11 +10,28 @@ function getLocation() {
             document.getElementById('startLat').value = startPos.coords.latitude;
             document.getElementById('startLon').value = startPos.coords.longitude;
         };
+        var geoError = function (error) {
+            if( error==0){
+                alert('unknown error');
+            }
+            if (error == 1) {
+                alert('permission denied');
+            }
+            if (error == 2) {
+                alert('position unavailable ');
+            }
+            if (error == 3) {
+                ('timed out');
+            }
+
+          console.log('Error occurred. Error code: ' + error.code);
+           
+        };
         navigator.geolocation.getCurrentPosition(geoSuccess);
     }
     else {
         //console.log('Geolocation is not supported for this Browser/OS version yet.');
-        alert('Geolocation is not supported for this Browser/OS version yet.')      
+        alert('Geolocation is not supported for this Browser/OS version yet.');
     }
     
 };
